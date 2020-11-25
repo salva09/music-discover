@@ -1,6 +1,16 @@
-<nav>
-  <a routerLink="/discover"><button>Discover</button></a>
-  <a routerLink="/liked"><button>Liked</button></a>
-</nav>
+<mat-toolbar color="primary">
+  <mat-icon>queue_music</mat-icon>
+  <span>Music Discover</span>
+  <span class="example-spacer"></span>
+
+  <button mat-icon-button routerLink="/discover">
+    <mat-icon>search</mat-icon>
+  </button>
+
+  <button mat-icon-button routerLink="/liked">
+    <mat-icon>favorite</mat-icon>
+  </button>
+
+</mat-toolbar>
 
 <router-outlet></router-outlet>
