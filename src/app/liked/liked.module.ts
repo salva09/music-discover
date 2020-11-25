@@ -1,10 +1,12 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import {LikedComponent} from './liked.component';
+import {LikedtRoutingModule} from './liked-routing.module';
+
 import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatIconModule} from '@angular/material/icon';
 import {MatButtonModule} from '@angular/material/button';
-import {LikedtRoutingModule} from './liked-routing.module';
+import { MatCardModule } from '@angular/material/card';
 
 @NgModule({
   declarations: [
@@ -13,6 +15,7 @@ import {LikedtRoutingModule} from './liked-routing.module';
   imports: [
     CommonModule,
     LikedtRoutingModule,
+    MatCardModule,
     MatToolbarModule,
     MatIconModule,
     MatButtonModule,
