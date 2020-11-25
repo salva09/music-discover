@@ -9,13 +9,17 @@ export class AppComponent {
   title = 'music-discover';
 
   constructor() {
-    let query = 'piano';
+    let query = 'alarm&fields=name,previews';
     query = query.concat(`&token=DTkKJVf5GktLFuU8I21pyUzqlEdn2pPaTY1f7kck`);
 
     this.httpGetAsync(
       `https://freesound.org/apiv2/search/text/?query=${query}`,
       (res) => {
-        console.log(res);
+        const json = JSON.parse(res);
+
+        json.results.forEach(element => {
+          console.log(element.name);
+        });
     });
   }
 
