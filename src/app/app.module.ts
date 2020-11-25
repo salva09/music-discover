@@ -4,15 +4,11 @@ import { NgModule } from '@angular/core';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MatCardModule} from '@angular/material/card';
-import { DiscoverComponent } from './discover/discover.component';
-import { LikedComponent } from './liked/liked.component';
 import { RouterModule } from '@angular/router';
 
 @NgModule({
   declarations: [
-    AppComponent,
-    DiscoverComponent,
-    LikedComponent
+    AppComponent
   ],
     imports: [
         BrowserModule,
