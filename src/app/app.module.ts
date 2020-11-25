@@ -3,8 +3,8 @@ import { NgModule } from '@angular/core';
 
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import {MatCardModule} from '@angular/material/card';
-import { RouterModule } from '@angular/router';
+import { MatCardModule } from '@angular/material/card';
+import { AppRoutingModule } from './app-routing.module';
 
 @NgModule({
   declarations: [
@@ -14,21 +14,7 @@ import { RouterModule } from '@angular/router';
         BrowserModule,
         BrowserAnimationsModule,
         MatCardModule,
-        RouterModule.forRoot([
-          {
-            path: 'discover',
-            loadChildren: () => import('./discover/discover.module').then(m => m.DiscoverModule),
-          },
-          {
-            path: 'liked',
-            loadChildren: () => import('./liked/liked.module').then(m => m.LikedModule),
-          },
-          {
-            path: '',
-            redirectTo: 'discover',
-            pathMatch: 'full' ,
-          }
-      ])
+        AppRoutingModule,
     ],
   providers: [],
   bootstrap: [AppComponent]
