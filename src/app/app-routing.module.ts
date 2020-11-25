@@ -1,17 +1,24 @@
 import { NgModule } from '@angular/core';
-import { RouterModule, Routes, PreloadAllModules, NoPreloading } from '@angular/router';
-import {DiscoverComponent} from './discover/discover.component';
-import {LikedComponent} from './liked/liked.component';
+import { RouterModule, Routes, PreloadAllModules } from '@angular/router';
 
 const routes: Routes = [
-  { path: '', pathMatch: 'full', redirectTo: '/discover' },
-  { path: 'discover', component: DiscoverComponent },
-  { path: 'liked', component: LikedComponent },
+  {
+    path: 'discover',
+    loadChildren: () => import('./discover/discover.module').then(m => m.DiscoverModule),
+  },
+  {
+    path: 'liked',
+    loadChildren: () => import('./liked/liked.module').then(m => m.LikedModule),
+  },
+  {
+    path: '',
+    pathMatch: 'full',
+    redirectTo: '/discover'
+  },
 ];
 
 @NgModule({
-  imports: [ RouterModule.forRoot(routes, { relativeLinkResolution: 'legacy' }) ],
+  imports: [ RouterModule.forRoot(routes, { preloadingStrategy: PreloadAllModules })],
   exports: [ RouterModule ],
-  providers: []
 })
 export class AppRoutingModule { }
