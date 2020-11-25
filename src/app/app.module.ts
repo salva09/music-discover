@@ -19,9 +19,19 @@ import { RouterModule } from '@angular/router';
         BrowserAnimationsModule,
         MatCardModule,
         RouterModule.forRoot([
-          { path: 'discover', component: DiscoverComponent },
-          { path: 'liked', component: LikedComponent },
-          { path: '', redirectTo: 'discover', pathMatch: 'full' }
+          {
+            path: 'discover',
+            loadChildren: () => import('./discover/discover.module').then(m => m.DiscoverModule),
+          },
+          {
+            path: 'liked',
+            loadChildren: () => import('./liked/liked.module').then(m => m.LikedModule),
+          },
+          {
+            path: '',
+            redirectTo: 'discover',
+            pathMatch: 'full' ,
+          }
       ])
     ],
   providers: [],
