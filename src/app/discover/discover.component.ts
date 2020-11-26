@@ -32,6 +32,10 @@ export class DiscoverComponent implements OnInit {
     audio.play().then(r => audio.pause());
   }
 
+  saveLiked(result): void {
+    // Here add the song to cookies
+  }
+
   httpGetAsync(theUrl, callback): void {
     const xmlHttp: XMLHttpRequest = new XMLHttpRequest();
     xmlHttp.onreadystatechange = () => {
