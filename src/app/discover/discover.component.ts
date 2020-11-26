@@ -9,6 +9,7 @@ import { CookieService } from 'ngx-cookie-service';
 export class DiscoverComponent implements OnInit {
   results: any;
   sonido="alarm";
+  cadena="";
   constructor(private cookieService: CookieService) {
   }
 
@@ -42,10 +43,18 @@ export class DiscoverComponent implements OnInit {
     audio.play().then(r => audio.pause());
   }
 
-  saveLiked(result): void {
+  saveLiked(result: { name: string; previews: string; } ): void {
     // Here add the song to cookies
     // How to add a list of songs to cookies?
     // this.cookieService.set('liked', '');
+    console.log(result.name);
+    var auxPreview=result.previews['preview-lq-ogg'];
+    console.log(result.previews);
+    this.cadena = this.cadena.concat(result.name);
+    this.cadena = this.cadena.concat(auxPreview);
+    console.log(this.cadena);
+    this.cookieService.set('soundCookie', this.cadena);
+    this.cookieService.getAll();
   }
 
   httpGetAsync(theUrl, callback): void {
