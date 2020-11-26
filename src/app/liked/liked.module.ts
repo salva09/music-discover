@@ -8,6 +8,8 @@ import {MatIconModule} from '@angular/material/icon';
 import {MatButtonModule} from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
 
+import { CookieService } from 'ngx-cookie-service';
+
 @NgModule({
   declarations: [
     LikedComponent
@@ -20,5 +22,6 @@ import { MatCardModule } from '@angular/material/card';
     MatIconModule,
     MatButtonModule,
   ],
+  providers: [ CookieService ],
 })
 export class LikedModule { }
