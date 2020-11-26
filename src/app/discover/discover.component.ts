@@ -9,7 +9,7 @@ import { CookieService } from 'ngx-cookie-service';
 export class DiscoverComponent implements OnInit {
   results: any;
 
-  constructor() {
+  constructor(private cookieService: CookieService) {
   }
 
   ngOnInit(): void {
@@ -35,6 +35,8 @@ export class DiscoverComponent implements OnInit {
 
   saveLiked(result): void {
     // Here add the song to cookies
+    // How to add a list of songs to cookies?
+    // this.cookieService.set('liked', '');
   }
 
   httpGetAsync(theUrl, callback): void {
