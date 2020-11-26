@@ -1,6 +1,9 @@
 <mat-toolbar color="primary">
   <mat-icon>search</mat-icon>
-  <span>Discover</span>
+  <form (submit)="nameSound(Sound)">
+    <input type="text" class="form-control" placeholder="s o u n d" #Sound>
+    <button>search</button>
+  </form>
 </mat-toolbar>
 
 <mat-card *ngFor="let result of results">

@@ -8,12 +8,21 @@ import { CookieService } from 'ngx-cookie-service';
 })
 export class DiscoverComponent implements OnInit {
   results: any;
-
+  sonido="alarm";
   constructor(private cookieService: CookieService) {
   }
 
+  nameSound(Sound: HTMLInputElement){
+    
+    console.log(Sound.value);
+    this.sonido=Sound.value;
+    this.ngOnInit();
+    Sound.value = '';
+    return false;
+  }
+
   ngOnInit(): void {
-    let query = 'alarm&fields=name,previews';
+    let query = this.sonido.concat('&fields=name,previews');
     query = query.concat(`&token=DTkKJVf5GktLFuU8I21pyUzqlEdn2pPaTY1f7kck`);
 
     this.httpGetAsync(
