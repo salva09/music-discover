@@ -6,6 +6,6 @@
 <mat-card *ngFor="let result of results">
   <mat-card-title>{{result.name}}</mat-card-title>
   <mat-card-content>
-    <button>Play</button>
+    <button (click)="playPreview(result)">Play</button>
   </mat-card-content>
 </mat-card>

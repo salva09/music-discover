@@ -21,7 +21,15 @@ export class DiscoverComponent implements OnInit {
         const json = JSON.parse(res);
 
         this.results = json.results;
+        console.log(this.results);
       });
+  }
+
+  playPreview(result): void {
+    const audio = new Audio();
+    audio.src = result.previews['preview-lq-ogg'];
+    audio.load();
+    audio.play().then(r => audio.pause());
   }
 
   httpGetAsync(theUrl, callback): void {
