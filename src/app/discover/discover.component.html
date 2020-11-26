@@ -3,9 +3,9 @@
   <span>Discover</span>
 </mat-toolbar>
 
-<mat-card>
-  <mat-card-title>Test</mat-card-title>
+<mat-card *ngFor="let result of results">
+  <mat-card-title>{{result.name}}</mat-card-title>
   <mat-card-content>
-    <p>discover works!</p>
+    <button>Play</button>
   </mat-card-content>
 </mat-card>
