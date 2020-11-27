@@ -8,53 +8,50 @@ import { CookieService } from 'ngx-cookie-service';
 })
 export class DiscoverComponent implements OnInit {
   results: any;
-  sonido="alarm";
-  cadena="";
+  searchFor = '';
+
   constructor(private cookieService: CookieService) {
   }
 
-  nameSound(Sound: HTMLInputElement){
-    
-    console.log(Sound.value);
-    this.sonido=Sound.value;
-    this.ngOnInit();
-    Sound.value = '';
-    return false;
-  }
-
   ngOnInit(): void {
-    let query = this.sonido.concat('&fields=name,previews');
+    let query = this.searchFor.concat('&fields=name,previews');
     query = query.concat(`&token=DTkKJVf5GktLFuU8I21pyUzqlEdn2pPaTY1f7kck`);
 
     this.httpGetAsync(
       `https://freesound.org/apiv2/search/text/?query=${query}`,
       (res) => {
         const json = JSON.parse(res);
-
         this.results = json.results;
-        console.log(this.results);
       });
+  }
+
+  searchSongs(Sound: HTMLInputElement): boolean {
+    this.searchFor = Sound.value;
+    this.ngOnInit();
+    Sound.value = '';
+    return false;
   }
 
   playPreview(result): void {
     const audio = new Audio();
     audio.src = result.previews['preview-lq-ogg'];
     audio.load();
-    audio.play().then(r => audio.pause());
+    audio.play().then(() => audio.pause());
   }
 
-  saveLiked(result: { name: string; previews: string; } ): void {
-    // Here add the song to cookies
-    // How to add a list of songs to cookies?
-    // this.cookieService.set('liked', '');
-    console.log(result.name);
-    var auxPreview=result.previews['preview-lq-ogg'];
-    console.log(result.previews);
-    this.cadena = this.cadena.concat(result.name);
-    this.cadena = this.cadena.concat(auxPreview);
-    console.log(this.cadena);
-    this.cookieService.set('soundCookie', this.cadena);
-    this.cookieService.getAll();
+  saveLiked(result): void {
+    // this.cookieService.set('liked_songs', ''); // Use this to clear the cookies
+    const cookie = this.cookieService.get('liked_songs');
+    let cookieList;
+
+    if (cookie === '') {
+      cookieList = [];
+    } else {
+      cookieList = JSON.parse(this.cookieService.get('liked_songs'));
+    }
+    cookieList.push(result);
+
+    this.cookieService.set('liked_songs', JSON.stringify(cookieList));
   }
 
   httpGetAsync(theUrl, callback): void {
@@ -64,7 +61,7 @@ export class DiscoverComponent implements OnInit {
         callback(xmlHttp.responseText);
       }
     };
-    xmlHttp.open('GET', theUrl, true); // true for asynchronous
+    xmlHttp.open('GET', theUrl, true);
     xmlHttp.send(null);
   }
 }
