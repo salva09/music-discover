@@ -1,13 +1,15 @@
-<mat-toolbar color="primary">
+<mat-toolbar class="toolbar-color">
   <mat-icon>favorite</mat-icon>
   <span>Liked</span>
 </mat-toolbar>
 
-<mat-card *ngFor="let result of results">
-  <mat-card-title>{{result.name}}</mat-card-title>
+<mat-card class="card-Format" *ngFor="let result of results">
   <mat-card-content>
-    <button (click)="playPreview(result)">Play</button>
+    <h2>
+      {{result.name}}
+      <button class="buttonOption float-right btn btn-dark btn-sm" (click)="playPreview(result)">Play</button>
+    </h2>
   </mat-card-content>
 </mat-card>
 
-<button (click)="clearCookies()">Clear list</button>
+<button class="buttonCookie btn-sm " (click)="clearCookies()">CLEAR LIST</button>
