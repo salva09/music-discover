@@ -2,11 +2,11 @@
   <mat-icon>search</mat-icon>
   <form (submit)="searchSongs(Sound)">
     <input type="text" class="form-control" placeholder="s o u n d" #Sound>
-    <button mat-raised-button color="purple" class="btn btn-primary btn-xs">search</button>
+    <button mat-raised-button class="buttonSearch">search</button>
   </form>
 </mat-toolbar>
 
-<mat-card *ngFor="let result of results">
+<mat-card class="card-Format" *ngFor="let result of results">
   <mat-card-title>{{result.name}}</mat-card-title>
   <mat-card-content>
     <button (click)="playPreview(result)">Play</button>
