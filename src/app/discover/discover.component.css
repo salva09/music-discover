@@ -1,25 +1,29 @@
 .buttonSearch{
-    width: 5em;  height: 2em;
-    line-height: 2em;
-    font-size: 12px;
-    border: 1px rgb(7, 7, 7);
-    background-color: white;
-    border-color: darkgray;
-    font-style: normal;
-    margin-left: 4px;
+    border-radius: 5px;
+    margin-left: 8px;
 }
 
 .form-control{
-    width: 200px; height: 20px;
     border-radius: 5px;
     margin-left: 5px;
     border-color: darkgray;
 }
 
 .card-Format{
-    border-radius: 8px;
-    border-color: gray;
-    margin-top: 10px;
-    margin-left: 5px;
+    border-radius: 15px;
+    border-color: rgba(54, 53, 53, 0.493);
+    margin-left: 20px;
+    margin-right: 20px;
+    margin-bottom: 20px;
+    margin-top: 20px;
+}
+
+.toolbar-color{
+    background-color: rgb(93, 146, 170);
+}
+
+.buttonOption{
+    border-radius: 5px;
     margin-right: 5px;
+    font-family: Arial, Helvetica, sans-serif;
 }
