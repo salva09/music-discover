@@ -3,9 +3,11 @@
   <span>Liked</span>
 </mat-toolbar>
 
-<mat-card>
-  <mat-card-title>Test</mat-card-title>
+<mat-card *ngFor="let result of results">
+  <mat-card-title>{{result.name}}</mat-card-title>
   <mat-card-content>
-    <p>liked works!</p>
+    <button (click)="playPreview(result)">Play</button>
   </mat-card-content>
 </mat-card>
+
+<button (click)="clearCookies()">Clear list</button>
